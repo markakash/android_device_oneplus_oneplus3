@@ -28,6 +28,8 @@ PLATFORM_PATH := device/oneplus/oneplus3
 
 TARGET_SPECIFIC_HEADER_PATH := $(PLATFORM_PATH)/include
 
+OVERRIDE_QCOM_HARDWARE_VARIANT := msm8996
+
 BOARD_VENDOR := oneplus
 
 # Assertions
@@ -125,6 +127,9 @@ BOARD_USES_QCNE := true
 # Crypto
 TARGET_HW_DISK_ENCRYPTION := true
 
+# Disable qmi EAP-SIM security
+DISABLE_EAP_PROXY := true
+
 # Display
 BOARD_USES_ADRENO := true
 TARGET_CONTINUOUS_SPLASH_ENABLED := true
@@ -202,7 +207,7 @@ BOARD_FLASH_BLOCK_SIZE := 262144
 TARGET_USES_MKE2FS := true
 
 # Power
-TARGET_HAS_NO_WLAN_STATS := true
+TARGET_HAS_NO_WIFI_STATS := true
 TARGET_TAP_TO_WAKE_NODE := "/proc/touchpanel/double_tap_enable"
 TARGET_USES_INTERACTION_BOOST := true
 
@@ -221,8 +226,9 @@ TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_op3
 TARGET_RELEASETOOLS_EXTENSIONS := $(PLATFORM_PATH)
 
 # SELinux
-include device/qcom/sepolicy/sepolicy.mk
+include device/qcom/sepolicy/Android.mk
 
+SELINUX_IGNORE_NEVERALLOWS := true
 BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
 
 # Shims
@@ -254,3 +260,4 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # inherit from the proprietary version
 -include vendor/oneplus/oneplus3/BoardConfigVendor.mk
+

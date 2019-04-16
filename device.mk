@@ -29,7 +29,7 @@ $(call inherit-product, vendor/oneplus/oneplus3/oneplus3-vendor.mk)
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-pe
+    $(LOCAL_PATH)/overlay-pa
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -367,7 +367,8 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.1-service-qti
+    android.hardware.power@1.0-impl \
+    android.hardware.power@1.0-service
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
@@ -427,9 +428,6 @@ PRODUCT_PACKAGES += \
 # Telephony
 PRODUCT_PACKAGES += \
     ims-ext-common \
-    telephony-ext
-
-PRODUCT_BOOT_JARS += \
     telephony-ext
 
 # TextClassifier smart selection model files
@@ -499,4 +497,4 @@ PRODUCT_BOOT_JARS += \
     WfdCommon
 
 # Inherit from oppo-common
-$(call inherit-product, device/oneplus/common/common.mk)
+#$(call inherit-product, device/oneplus/common/common.mk)
